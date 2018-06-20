@@ -14,6 +14,9 @@ RUN tar xf lede-sdk.tar.xz \
 ENV PATH="/root/lede-sdk/staging_dir/toolchain-arm_cortex-a53+neon-vfpv4_gcc-5.4.0_musl-1.1.16_eabi/bin:${PATH}"
 ENV HOST="arm-openwrt-linux-muslgnueabi"
 
+RUN apt-get autoremove -y \
+    && apt-get clean
+
 WORKDIR /root
 
 ENTRYPOINT echo \$HOST=$HOST && /bin/bash
